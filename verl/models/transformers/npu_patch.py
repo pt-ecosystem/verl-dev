@@ -62,7 +62,7 @@ MODEL_CLASSES = {
 def npu_apply_rotary_pos_emb_flashatt(
     q: torch.Tensor, k: torch.Tensor, cos: torch.Tensor, sin: torch.Tensor
 ) -> tuple[torch.Tensor, torch.Tensor]:
-    """NPU optimized rotary position embedding for vlm model"""
+    """NPU optimized rotary position embedding"""
     cos = cos.chunk(2, dim=-1)[0].contiguous()
     sin = sin.chunk(2, dim=-1)[0].contiguous()
     cos = cos.repeat(1, 2)
